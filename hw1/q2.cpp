@@ -5,7 +5,7 @@ DigitalOut led1(LED1);
 DigitalOut led2(LED2);
 DigitalOut led3(LED3);
 DigitalIn  User_Button(PA_0,PullNone);
-// main() runs in its own thread in the OS
+
 int main()
 {
     int count = 0;

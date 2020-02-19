@@ -14,7 +14,7 @@ int main()
     uint16_t x1, y1,x_pos,y_pos;
     BSP_LCD_Init();
 
-    /* Touchscreen initialization */
+    
     if (BSP_TS_Init(BSP_LCD_GetXSize(), BSP_LCD_GetYSize()) == TS_ERROR) {
         printf("BSP_TS_Init error\n");
     }
