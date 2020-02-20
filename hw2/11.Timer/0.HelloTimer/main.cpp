@@ -1,4 +1,4 @@
-#include "mbed.h"
+/*#include "mbed.h"
  
 Timer t;
  
@@ -9,3 +9,4 @@ int main()
     t.stop();
     printf("The time taken was %f seconds\n", t.read());
 }
+*/
