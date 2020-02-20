@@ -3,5 +3,6 @@
 projectfiles
 *.py*
 mbed-os
+.mbed-os
 BUILD
 .DS_Store
