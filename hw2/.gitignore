@@ -4,7 +4,9 @@ target/
 projectfiles
 *.py*
 *mbed
+*mbed-os
 mbed-os
 .mbed-os
 BUILD
 .DS_Store
+hw2/mbed-os
