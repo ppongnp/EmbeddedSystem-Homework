@@ -1,4 +1,4 @@
 # EmbeddedSystem-Homework
-youtube video:
-for homework 1 video: https://youtu.be/HH4s-mSOTyo
+youtube video: <br/>
+for homework 1 video: https://youtu.be/HH4s-mSOTyo <br/>
 for homework 2 video: https://youtu.be/ELUC3cEkDYY
