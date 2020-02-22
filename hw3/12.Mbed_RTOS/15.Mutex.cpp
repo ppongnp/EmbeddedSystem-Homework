@@ -1,4 +1,4 @@
-#include "mbed.h"
+/*#include "mbed.h"
 
 Mutex stdio_mutex;
 Thread t2;
@@ -16,9 +16,9 @@ void test_thread(void const *args)
     while (true) 
     {
         notify((const char*)args, 0); 
-        wait(1);
+        thread_sleep_for(1000);
         notify((const char*)args, 1); 
-        wait(1);
+        thread_sleep_for(1000);
     }
 }
 
@@ -29,3 +29,4 @@ int main()
 
     test_thread((void *)"Th 1");
 }
+*/
