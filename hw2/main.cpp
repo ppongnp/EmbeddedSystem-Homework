@@ -13,9 +13,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-/* 
-#include "mbed.h"
 
+#include "mbed.h"
+Serial UART(SERIAL_TX, SERIAL_RX);
 WiFiInterface *wifi;
 
 const char *sec2str(nsapi_security_t sec)
@@ -74,24 +74,25 @@ int scan_demo(WiFiInterface *wifi)
 
 int main()
 {
+    
         printf("WiFi example\n"); // Serial Buad Rate 9600
-
+        
     #ifdef MBED_MAJOR_VERSION
         printf("Mbed OS version %d.%d.%d\n\n", MBED_MAJOR_VERSION, MBED_MINOR_VERSION, MBED_PATCH_VERSION);
     #endif
-
+        
         wifi = WiFiInterface::get_default_instance();
         if (!wifi) {
             printf("ERROR: No WiFiInterface found.\n");
             return -1;
         }
-
+        
         int count = scan_demo(wifi);
         if (count == 0) {
             printf("No WIFI APs found - can't continue further.\n");
             return -1;
-        }
-
+        }      
+        
         printf("\nConnecting to %s...\n", MBED_CONF_APP_WIFI_SSID);
         int ret = wifi->connect(MBED_CONF_APP_WIFI_SSID, MBED_CONF_APP_WIFI_PASSWORD, NSAPI_SECURITY_WPA_WPA2);
         if (ret != 0) {
@@ -111,4 +112,3 @@ int main()
         printf("\nDone\n");
         thread_sleep_for(10000);
     }
-*/

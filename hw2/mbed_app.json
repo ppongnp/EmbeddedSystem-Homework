@@ -6,7 +6,7 @@
         },
         "wifi-ssid": {
             "help": "WiFi SSID",
-            "value": "\"IC_wifi\""
+            "value": "\"IC_Wifi\""
         },
         "wifi-password": {
             "help": "WiFi Password",
