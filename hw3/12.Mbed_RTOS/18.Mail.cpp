@@ -1,11 +1,11 @@
 #include "mbed.h"
 
-/* Mail */
+/* 
 typedef struct 
 {
-  float    voltage; /* AD result of measured voltage */
-  float    current; /* AD result of measured current */
-  uint32_t counter; /* A counter value               */
+  float    voltage; 
+  float    current; 
+  uint32_t counter; 
 } mail_t;
 
 Mail<mail_t, 16> mail_box;
@@ -43,3 +43,4 @@ int main (void)
         }
     }
 }
+*/

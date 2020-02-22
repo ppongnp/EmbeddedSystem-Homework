@@ -1,7 +1,7 @@
 /* mbed Microcontroller Library
  * Copyright (c) 2019 ARM Limited
  * SPDX-License-Identifier: Apache-2.0
- */
+ 
 
 #include "mbed.h"
 #include "platform/mbed_thread.h"
@@ -21,3 +21,4 @@ int main()
         thread_sleep_for(BLINKING_RATE_MS);
     }
 }
+*/

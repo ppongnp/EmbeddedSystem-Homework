@@ -12,5 +12,6 @@ mbed-os
 BUILD/
 .mbed
 venv/
-
+.BSP_DISCO_F413ZH
+BSP_DISCO_F413ZH
 .DS_Store
