@@ -1,0 +1,16 @@
+.build
+.mbed
+projectfiles
+*.py*
+*mbed
+*mbed-os
+mbed-os
+.mbed-os
+.BUILD/
+.DS_Store
+.build/
+BUILD/
+.mbed
+venv/
+
+.DS_Store
