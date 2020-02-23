@@ -1,4 +1,4 @@
-#include "mbed.h"
+/*#include "mbed.h"
 
 Semaphore one_slot(3);
 Thread t2;
@@ -22,3 +22,4 @@ int main (void)
 
     test_thread((void *)"Th 1");
 }
+*/
