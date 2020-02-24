@@ -1,4 +1,4 @@
-#include "mbed.h"
+/*#include "mbed.h"
 #include "stm32f413h_discovery.h"
 #include "stm32f413h_discovery_ts.h"
 #include "stm32f413h_discovery_lcd.h"
@@ -64,6 +64,7 @@ void updateValue(const char* name)
         light_value = 0;
     }
     stdio_mutex.unlock();
+    thread_sleep_for(500);
 }
 
 void update_thread(void const *args)
@@ -71,7 +72,7 @@ void update_thread(void const *args)
     while (true) 
     {
         updateValue((const char*)args); 
-        thread_sleep_for(100);
+        thread_sleep_for(500);
     }
 }
 
@@ -123,3 +124,4 @@ char *intTostring(int num,int mode){
 
     return result;
 }
+*/
