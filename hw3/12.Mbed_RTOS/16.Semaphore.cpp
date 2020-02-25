@@ -62,22 +62,27 @@ void updateValue(const char* name)
     swapValue(first, second);
     BSP_LCD_SetTextColor(semaphore_color[first]);
 
-    temp_value = rand() % 50;
-    char temp1[10]; 
-    sprintf(temp1, "%d", temp_value);
+    if(strcmp(name,"TEMPERATURE")==0){
+        temp_value = rand() % 50;
+        char temp_str[10]; 
+        sprintf(temp_str, "%d", temp_value);
+        BSP_LCD_DisplayStringAt(10, 220, (uint8_t *)temp_str,LEFT_MODE);
+    }
 
-    humid_value = rand() % 100; 
-    char temp2[10]; 
-    sprintf(temp2, "%d", humid_value);
+    else if(strcmp(name,"HUMIDITY")==0){
+        humid_value = rand() % 100; 
+        char humid_str[10]; 
+        sprintf(humid_str, "%d", humid_value);
+        BSP_LCD_DisplayStringAt((BSP_LCD_GetXSize()/3) + 10, 220, (uint8_t *)humid_str,LEFT_MODE);
+    }
 
-    light_value = rand() % (10000 + 1 - 1000) + 1000;
-    char temp3[10]; 
-    sprintf(temp3, "%d", light_value);
+    else if(strcmp(name,"LIGHT INTENSITY")==0){
+        light_value = rand() % (10000 + 1 - 1000) + 1000;
+        char light_str[10]; 
+        sprintf(light_str, "%d", light_value);
+        BSP_LCD_DisplayStringAt(((BSP_LCD_GetXSize() * 2) /3) + 10, 220, (uint8_t *)light_str,LEFT_MODE);
+    }
 
-    BSP_LCD_DisplayStringAt(10, 220, (uint8_t *)temp1,LEFT_MODE);
-    BSP_LCD_DisplayStringAt((BSP_LCD_GetXSize()/3) + 10, 220, (uint8_t *)temp2,LEFT_MODE);
-    BSP_LCD_DisplayStringAt(((BSP_LCD_GetXSize() * 2) /3) + 10, 220, (uint8_t *)temp3,LEFT_MODE);
-    
     thread_sleep_for(1000);
     one_slot.release();
     
