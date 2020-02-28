@@ -1,5 +1,5 @@
 #include "mbed.h"
-
+/* 
 Thread thread;
 DigitalOut led1(LED1);
 volatile bool running = true;
@@ -22,3 +22,4 @@ int main()
     running = false;
     thread.join();
 }
+*/

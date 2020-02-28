@@ -1,26 +1,22 @@
-#include "mbed.h"
-
+/*#include "mbed.h"
 #include "stm32f413h_discovery.h"
 #include "stm32f413h_discovery_ts.h"
 #include "stm32f413h_discovery_lcd.h"
 
 void display_screen(int mode);
-void updateValue();
+void updateValue(const char* name);
 void update_thread(void const *args);
 void screen_setup(uint16_t textColor,uint16_t BackgroundColor);
-void bar_setup();
 char *intTostring(int num,int mode);
 
-Semaphore one_slot(1);
+
+Mutex stdio_mutex;
 Thread temp;
 Thread humid;
 Thread light;
 TS_StateTypeDef  TS_State = {0};
-uint16_t semaphore_color[] = {LCD_COLOR_BLUE,LCD_COLOR_RED};
-int temp_value,humid_value,light_value;
-int first = 0,second = 1;
-char tem[2],hum[3],lig[5];
 
+int temp_value,humid_value,light_value;
 
 int main() 
 {
@@ -50,17 +46,24 @@ int main()
     }
 }
 
-void updateValue() {
-
-    temp_value = rand() % 50;
-    sprintf(tem,"%d",temp_value);
-
-    humid_value = rand() % 100; 
-    sprintf(hum,"%d",humid_value);
-    
-    light_value = rand() % (10000 + 1 - 1000) + 1000;
-    sprintf(lig,"%d",light_value);
-
+void updateValue(const char* name) 
+{
+    stdio_mutex.lock();
+    if ( strcmp(name,"Temperature") == 0) {
+        temp_value = rand() % 50;
+    }
+    else if( strcmp(name, "Humidity") == 0) {
+        humid_value = rand() % 100; 
+    }
+    else if ( strcmp(name,"LightIntensity") == 0) {
+        light_value = rand() % 100000;
+    }
+    else{
+        temp_value = 0;
+        humid_value = 0;
+        light_value = 0;
+    }
+    stdio_mutex.unlock();
     thread_sleep_for(500);
 }
 
@@ -68,21 +71,7 @@ void update_thread(void const *args)
  {
     while (true) 
     {
-        updateValue();
-        one_slot.wait();
-        BSP_LCD_SetTextColor(LCD_COLOR_BLACK);
-
-        if(strcmp((const char*)args,"Temperature")==0){
-            BSP_LCD_DisplayStringAt(BSP_LCD_GetXSize() - 230, 220, (uint8_t *)tem, LEFT_MODE);
-        }
-        else if (strcmp((const char*)args,"Humidity")==0) {
-            BSP_LCD_DisplayStringAt((BSP_LCD_GetXSize() / 3) + 10, 220, (uint8_t *)hum, LEFT_MODE);
-        }
-        else if (strcmp((const char*)args,"LightIntensity")==0) {
-            BSP_LCD_DisplayStringAt(((BSP_LCD_GetXSize() / 3) *2 )+ 10, 220, (uint8_t *)lig, LEFT_MODE);
-        }
-
-        one_slot.release();
+        updateValue((const char*)args); 
         thread_sleep_for(500);
     }
 }
@@ -91,23 +80,20 @@ void display_screen(int mode){
     if (mode == 1){
         char *returned_result = intTostring(temp_value, mode);
         screen_setup(LCD_COLOR_WHITE, LCD_COLOR_RED);
-        BSP_LCD_DisplayStringAt(0, 40, (uint8_t *)"TEMPERATURE", CENTER_MODE);
-        BSP_LCD_DisplayStringAt(0,160, (uint8_t *)returned_result, CENTER_MODE);
-        bar_setup();
+        BSP_LCD_DisplayStringAt(0, 80, (uint8_t *)"TEMPERATURE", CENTER_MODE);
+        BSP_LCD_DisplayStringAt(0,200, (uint8_t *)returned_result, CENTER_MODE);
     }
     else if (mode == 2){
-        char *returned_result = intTostring(humid_value, mode);
+        char *returned_result = intTostring(temp_value, mode);
         screen_setup(LCD_COLOR_WHITE, LCD_COLOR_BLUE);
-        BSP_LCD_DisplayStringAt(0, 40, (uint8_t *)"HUMIDITY", CENTER_MODE);
-        BSP_LCD_DisplayStringAt(0,160, (uint8_t *)returned_result, CENTER_MODE);
-        bar_setup();
+        BSP_LCD_DisplayStringAt(0, 80, (uint8_t *)"HUMIDITY", CENTER_MODE);
+        BSP_LCD_DisplayStringAt(0,200, (uint8_t *)returned_result, CENTER_MODE);
     }
     else if (mode == 3){
-        char *returned_result = intTostring(light_value, mode);
+        char *returned_result = intTostring(temp_value, mode);
         screen_setup(LCD_COLOR_YELLOW, LCD_COLOR_BLACK);
-        BSP_LCD_DisplayStringAt(0, 40, (uint8_t *)"LIGHT INTENSITY", CENTER_MODE);
-        BSP_LCD_DisplayStringAt(0,160, (uint8_t *)returned_result, CENTER_MODE);
-        bar_setup();
+        BSP_LCD_DisplayStringAt(0, 80, (uint8_t *)"LIGHT INTENSITY", CENTER_MODE);
+        BSP_LCD_DisplayStringAt(0,200, (uint8_t *)returned_result, CENTER_MODE);
     }
 }
 
@@ -116,15 +102,6 @@ void screen_setup(uint16_t textColor,uint16_t BackgroundColor){
     BSP_LCD_SetTextColor(textColor);
     BSP_LCD_SetBackColor(BackgroundColor);
     BSP_LCD_SetFont(&Font16);
-}
-
-void bar_setup(){
-    BSP_LCD_SetTextColor(LCD_COLOR_WHITE);
-    BSP_LCD_FillRect(0, BSP_LCD_GetYSize() - 30, BSP_LCD_GetXSize(), 30);
-    BSP_LCD_SetTextColor(LCD_COLOR_BLACK);
-    BSP_LCD_DrawVLine(BSP_LCD_GetXSize()/3,BSP_LCD_GetYSize() - 30,30);
-    BSP_LCD_DrawVLine((BSP_LCD_GetXSize() * 2) /3,BSP_LCD_GetYSize() - 30,30);
-    BSP_LCD_SetBackColor(LCD_COLOR_WHITE);
 }
 
 char *intTostring(int num,int mode){
@@ -147,3 +124,4 @@ char *intTostring(int num,int mode){
 
     return result;
 }
+*/

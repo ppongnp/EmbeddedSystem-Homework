@@ -1,4 +1,4 @@
-#include "mbed.h"
+/*#include "mbed.h"
 
 Thread thread;
 DigitalOut led(LED1);
@@ -19,7 +19,8 @@ int main (void)
 
     while (true) 
     {
-        wait(0.25);
+        thread_sleep_for(1000);
         thread.signal_set(0x1);
     }
 }
+*/
