@@ -1,4 +1,4 @@
-/*#include "mbed.h"
+#include "mbed.h"
 #include "stm32f413h_discovery.h"
 #include "stm32f413h_discovery_ts.h"
 #include "stm32f413h_discovery_lcd.h"
@@ -124,4 +124,4 @@ char *intTostring(int num,int mode){
 
     return result;
 }
-*/
+

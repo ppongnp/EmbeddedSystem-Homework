@@ -1,4 +1,4 @@
-/*#include "mbed.h"
+#include "mbed.h"
 #include "stm32f413h_discovery.h"
 #include "stm32f413h_discovery_ts.h"
 #include "stm32f413h_discovery_lcd.h"
@@ -47,4 +47,4 @@ int main()
         led1 = !led1;
         thread_sleep_for(250);
     }
-}*/
+}

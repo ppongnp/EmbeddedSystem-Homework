@@ -1,5 +1,4 @@
 #include "mbed.h"
-
 #include "stm32f413h_discovery.h"
 #include "stm32f413h_discovery_ts.h"
 #include "stm32f413h_discovery_lcd.h"
@@ -11,7 +10,7 @@ void screen_setup(uint16_t textColor,uint16_t BackgroundColor);
 void bar_setup();
 char *intTostring(int num,int mode);
 
-Semaphore one_slot(1);
+Semaphore one_slot(3);
 Thread temp;
 Thread humid;
 Thread light;
