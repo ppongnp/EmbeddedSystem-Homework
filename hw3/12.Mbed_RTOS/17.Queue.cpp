@@ -1,5 +1,5 @@
 #include "mbed.h"
-/* 
+
 // Global Queue Handle
 Queue<unsigned int, 2> queue;
 
@@ -53,4 +53,3 @@ void Q2_thread(void const *args)
 
     }
 }
-*/
