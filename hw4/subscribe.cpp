@@ -95,7 +95,9 @@ int main()
     message.qos = MQTT::QOS0;
     message.retained = false;
     message.dup = false;
-    client.yield(1000); // This will also allow messages to be received. and wait to receive in milliseconds.
+    while(true){
+        client.yield(1000);
+    } // This will also allow messages to be received. and wait to receive in milliseconds.
     printf("Finishing with %d messages received\n", arrivedcount);
     
     mqttNetwork.disconnect();
