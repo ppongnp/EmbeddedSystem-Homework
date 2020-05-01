@@ -1,0 +1,17 @@
+{
+    "config": {
+        "wifi-ssid": {
+            "help": "WiFi SSID",
+            "value": "\"ppgxnp\""
+        },
+        "wifi-password": {
+            "help": "WiFi Password",
+            "value": "\"ad0816686208\""
+        }
+    },
+    "target_overrides": {
+        "*": {
+            "platform.stdio-convert-newlines": true
+        }
+    }
+}
